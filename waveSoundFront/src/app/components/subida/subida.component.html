@@ -1,0 +1,102 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn bg-dark border border-bottom-0 rounded-top straight-bottom text-white"
+    style="width: 33%;" data-bs-toggle="modal" data-bs-target="#subida">
+    Subir
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="subida" tabindex="-1" aria-hidden="true" #subida>
+
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content text-start">
+
+            <div class="modal-header d-flex align-items-center justify-content-around me-2">
+                <p class="modal-title fs-4 ps-4 fw-bold">Subida de canci&oacute;n</p>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" #closeModal aria-label="Close"></button>
+            </div>
+            <form [formGroup]="form" class="" (submit)="onSubmit()">
+                <div class="modal-body ms-4 me-4">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="titulo">Titulo:</label>
+                                <input class="form-control" type="text" id="titulo" name="titulo"
+                                    formControlName="titulo"
+                                    [ngClass]="{'is-invalid': form.get('titulo')?.invalid && submitted}" required>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="artista">Artista:</label>
+                                <input class="form-control" type="text" id="artista" name="artista"
+                                    formControlName="artista"
+                                    [ngClass]="{'is-invalid': form.get('artista')?.invalid && submitted }" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="album">Album:</label>
+                                <input class="form-control" type="text" id="album" name="album" formControlName="album"
+                                    [ngClass]="{'is-invalid': form.get('album')?.invalid && submitted}" required>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="genero">Genero:</label>
+                                <input class="form-control" type="text" id="genero" name="genero"
+                                    formControlName="genero"
+                                    [ngClass]="{'is-invalid': form.get('genero')?.invalid && submitted }" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="duracion">Duracion:</label>
+                                <input class="form-control" type="text" id="duracion" name="duracion"
+                                    formControlName="duracion"
+                                    [ngClass]="{'is-invalid': form.get('duracion')?.invalid && submitted }" required>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="ubicacion">Ubicacion:</label>
+                                <input class="form-control" type="text" id="ubicacion" name="ubicacion"
+                                    formControlName="ubicacion" [disabled]="true"
+                                    [ngClass]="{'is-invalid': form.get('ubicacion')?.invalid && submitted}" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2 mb-2">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="portada">Portada:</label>
+                                <input class="form-control" type="text" id="portada" name="portada"
+                                    formControlName="portada"
+                                    placeholder="Introduca link de internet -> Ex : http://..." pattern="^http.*"
+                                    [ngClass]="{'is-invalid': form.get('portada')?.invalid && submitted }" required>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="archivo">Archivo:</label>
+                                <input class="form-control" type="file" id="archivo" name="archivo"
+                                    formControlName="archivo" (change)="onFileSelected($event)"
+                                    [ngClass]="{'is-invalid': form.get('archivo')?.invalid && submitted}" required>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="modal-footer d-flex justify-content-around ps-2 pe-1 pb-0">
+                        <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">Close</button>
+                        <button class="btn btn-success w-50" type="submit">Subir</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
